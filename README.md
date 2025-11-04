@@ -14,3 +14,13 @@ The React Compiler is not enabled on this template because of its impact on dev 
 ## Expanding the ESLint configuration
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
+## When pushing code use these commands
+
+- Check with: npm run dev
+- Deploy the build: npm run build
+- Then for **git push**:
+  **git add -A**
+  **git commit -m "message"**
+  **git push**
+  
