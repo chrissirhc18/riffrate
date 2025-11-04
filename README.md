@@ -20,7 +20,7 @@ If you are developing a production application, we recommend using TypeScript wi
 - Check with: npm run dev
 - Deploy the build: npm run build
 - Then for **git push**:
-  **git add -A**
-  **git commit -m "message"**
-  **git push**
+  - **git add -A**
+  - **git commit -m "message"**
+  - **git push**
   
