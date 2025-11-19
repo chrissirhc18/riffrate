@@ -1,5 +1,7 @@
-import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link, Outlet } from "react-router";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import { useContext } from 'react';
+import { Link } from "react-router";
+import UserLoginStatus from "./components/context/UserLoginStatus";
 
 /* TODO
 - navigate between:
@@ -12,6 +14,8 @@ import { Link, Outlet } from "react-router";
 */
 
 function NaviBar(props) {
+    const [loginStatus, setLoginStatus] = useContext(UserLoginStatus);
+
     return (
         <div>
             <Navbar bg="white" variant="light" expand="md" fixed="top">
@@ -25,8 +29,13 @@ function NaviBar(props) {
                             <Nav.Link as={Link} to="/" style={linkStyle}>Home</Nav.Link>
                             <Nav.Link as={Link} to="/ReviewByBand" style={linkStyle}>Band Reviews</Nav.Link>
                             <Nav.Link as={Link} to="/ReviewByVenue" style={linkStyle}>Venue Reviews</Nav.Link>
-                            <Nav.Link as={Link} to="/ReviewPage" style={linkStyle}>Your Reviews</Nav.Link>
                             {/* TODO: LOG OUT/LOG IN */}
+                            { loginStatus ? 
+                                <>
+                                    <Nav.Link as={Link} to="/ReviewPage" style={linkStyle}>Your Reviews</Nav.Link>
+                                    <Nav.Link as={Link} to="/" style={linkStyle}>Log out</Nav.Link> 
+                                </> : <Nav.Link as={Link} to="/UserLogin" style={linkStyle}>Log in</Nav.Link>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
