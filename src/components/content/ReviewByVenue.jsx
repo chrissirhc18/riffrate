@@ -11,7 +11,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
-import MessageCard from "./MessageCard";
+import ReviewCard from "./ReviewCard";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -102,7 +102,7 @@ export default function ReviewByVenue() {
         <Row>
           {currentReviews.map((r) => (
             <Col md={4} key={r.id}>
-              <MessageCard
+              <ReviewCard
                 id={r.id}
                 title={r.title}
                 content={r.content}

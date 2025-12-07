@@ -1,14 +1,33 @@
 import React, { useState } from "react";
 import { Button, Form, ToggleButton, ButtonGroup, Alert } from "react-bootstrap";
+import { useNavigate } from "react-router";
 import { addReview } from "../../firebase/firebaseHelper";
+import { useAuth } from "../auth/AuthContext";
 
 export default function ReviewPage() {
+  const navigate = useNavigate();
+  const { userLoggedIn, currentUser } = useAuth();
+
   const [reviewType, setReviewType] = useState("band");
   const [name, setName] = useState("");
   const [content, setContent] = useState("");
   const [rating, setRating] = useState(0);
   const [error, setError] = useState("");
   const [successMsg, setSuccessMsg] = useState("");
+
+  // Redirect to login if not authenticated
+  if (!userLoggedIn) {
+    return (
+      <div style={{ padding: "1rem", textAlign: "center" }}>
+        <Alert variant="warning">
+          <h4>Please log in to write a review</h4>
+          <Button variant="primary" onClick={() => navigate("/UserLogin")}>
+            Go to Login
+          </Button>
+        </Alert>
+      </div>
+    );
+  }
 
   const handleSubmit = async () => {
     setError("");
@@ -26,10 +45,9 @@ export default function ReviewPage() {
         title: `${reviewType === "band" ? "Band" : "Venue"} Review`,
         content,
         rating,
-        poster: sessionStorage.getItem("username") || "Anonymous",
+        poster: currentUser?.email || currentUser?.displayName || sessionStorage.getItem("username") || "Anonymous",
       });
 
-      // show success and clear form (Option D: stay on page)
       setSuccessMsg("Review submitted! Thanks — your review is live.");
       setName("");
       setContent("");
@@ -110,7 +128,6 @@ export default function ReviewPage() {
 
       <div className="mt-3">
         <Button variant="secondary" onClick={() => {
-          // clear the form
           setName(""); setContent(""); setRating(0); setError(""); setSuccessMsg("");
         }}>
           Cancel
