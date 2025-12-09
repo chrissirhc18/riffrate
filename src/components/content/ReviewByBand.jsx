@@ -111,6 +111,7 @@ export default function ReviewByBand() {
                 created={r.created}
                 rating={r.rating}
                 userUid={r.userUid}
+                bandName = {r.bandName}
                 onDelete={() => handleDelete(r.id)}
               />
             </Col>

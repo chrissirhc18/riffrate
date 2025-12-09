@@ -112,7 +112,7 @@ export default function UserRegister() {
             <Form.Control
               id="passwordInput"
               type="password"
-              placeholder="Enter your password (min 6 characters)"
+              placeholder="Enter password (min 6 characters)"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               disabled={isRegistering}

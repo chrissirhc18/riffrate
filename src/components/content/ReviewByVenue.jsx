@@ -1,13 +1,3 @@
-/* TODO
-- search bar (hw4)
-- search button (once hit, shows average rating of the venue if reviews exist)
-- default displays 10 most recent band reviews
-- After search display:
-    - venue name
-    - average rating
-    - paginate reviews on venue (10 per page)
-*/
-
 import React, { useState, useEffect } from "react";
 import { Button, Container, Form, Row, Col } from "react-bootstrap";
 import Pagination from "react-bootstrap/Pagination";
@@ -68,6 +58,7 @@ export default function ReviewByVenue() {
   return (
     <div style={{ padding: "1rem" }}>
       <h1>Venue Reviews</h1>
+      
       <Button
         variant="success"
         onClick={() => navigate("/ReviewPage")}
@@ -79,6 +70,7 @@ export default function ReviewByVenue() {
       <p>Search for venues below!</p>
       <hr />
 
+      {/* Search Input */}
       <Form>
         <Form.Label htmlFor="searchVenueName">Venue name</Form.Label>
         <Form.Control
@@ -92,12 +84,14 @@ export default function ReviewByVenue() {
         </Button>
       </Form>
 
+      {/* Average rating */}
       {avgRating && (
         <h3 style={{ marginTop: "1rem" }}>
           Average Rating for "{searchTerm}": {avgRating}
         </h3>
       )}
 
+      {/* Reviews List */}
       <Container fluid>
         <Row>
           {currentReviews.map((r) => (
@@ -108,13 +102,17 @@ export default function ReviewByVenue() {
                 content={r.content}
                 poster={r.poster}
                 created={r.created}
-                delete={() => handleDelete(r.id)}
+                rating={r.rating}        
+                userUid={r.userUid}      
+                venueName={r.venueName}  
+                onDelete={() => handleDelete(r.id)} 
               />
             </Col>
           ))}
         </Row>
       </Container>
 
+      {/* Pagination */}
       {totalPages > 1 && (
         <Pagination className="mt-3">
           {[...Array(totalPages)].map((_, i) => (
