@@ -21,7 +21,7 @@ export default function ReviewPage() {
       <div style={{ padding: "1rem", textAlign: "center" }}>
         <Alert variant="warning">
           <h4>Please log in to write a review</h4>
-          <Button variant="primary" onClick={() => navigate("/UserLogin")}>
+          <Button type="button" variant="primary" onClick={() => navigate("/UserLogin")}>
             Go to Login
           </Button>
         </Alert>
@@ -93,8 +93,9 @@ export default function ReviewPage() {
       </ButtonGroup>
 
       <Form.Group className="mb-3">
-        <Form.Label>{reviewType === "band" ? "Band Name" : "Venue Name"}</Form.Label>
+        <Form.Label htmlFor="typeOfReview">{reviewType === "band" ? "Band Name" : "Venue Name"}</Form.Label>
         <Form.Control
+          id="typeOfReview"
           placeholder={`Enter ${reviewType} name`}
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -102,8 +103,9 @@ export default function ReviewPage() {
       </Form.Group>
 
       <Form.Group className="mb-3">
-        <Form.Label>Your Review</Form.Label>
+        <Form.Label htmlFor="yourReview">Your Review</Form.Label>
         <Form.Control
+          id="yourReview"
           as="textarea"
           rows={4}
           placeholder="Write your review..."
@@ -116,6 +118,7 @@ export default function ReviewPage() {
       <div className="mb-3">
         {[1, 2, 3, 4, 5].map((r) => (
           <Button
+            type="button"
             key={r}
             variant={rating >= r ? "warning" : "outline-secondary"}
             onClick={() => setRating(r)}
@@ -127,12 +130,12 @@ export default function ReviewPage() {
       </div>
 
       <div className="mt-3">
-        <Button variant="secondary" onClick={() => {
+        <Button type="submit" variant="secondary" onClick={() => {
           setName(""); setContent(""); setRating(0); setError(""); setSuccessMsg("");
         }}>
           Cancel
         </Button>{" "}
-        <Button variant="success" onClick={handleSubmit}>
+        <Button type="submit" variant="success" onClick={handleSubmit}>
           Submit Review
         </Button>
       </div>

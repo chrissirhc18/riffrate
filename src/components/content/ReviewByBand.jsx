@@ -67,6 +67,7 @@ export default function ReviewByBand() {
       <h1>Band Reviews</h1>
 
       <Button
+        type="button"
         variant="success"
         onClick={() => navigate("/ReviewPage")}
         className="mb-3"

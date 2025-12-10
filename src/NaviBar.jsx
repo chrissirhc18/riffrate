@@ -31,7 +31,7 @@ function NaviBar() {
                             <Nav.Link as={Link} to="/ReviewByVenue" style={linkStyle}>Venue Reviews</Nav.Link>
                             {userLoggedIn ? (
                                 <>
-                                    <Nav.Link as={Link} to="/ReviewPage" style={linkStyle}>Your Reviews</Nav.Link>
+                                    <Nav.Link as={Link} to="/UserProfile" style={linkStyle}>Your Reviews</Nav.Link>
                                     <Nav.Link onClick={handleLogout} style={{...linkStyle, cursor: 'pointer'}}>
                                         Log out
                                     </Nav.Link>

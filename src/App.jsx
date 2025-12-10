@@ -24,6 +24,7 @@ function App() {
           <Route path="/UserLogin" element={<UserLogin/>}></Route>
           <Route path="/UserRegister" element={<UserRegister/>}></Route>
           <Route path="/UserProfile" element={<UserProfile/>}></Route>
+          
         </Routes>
       </HashRouter>
     </AuthProvider>
