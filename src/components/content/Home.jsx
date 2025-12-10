@@ -23,14 +23,14 @@ export default function Home() {
         <div className="page-container">
             <h1>Welcome to Riffrate</h1>
             <br />
-            <h3>Track artists and venues you love.</h3>
-            <h3>Tell your friends what's good.</h3>
+            <h2>Track artists and venues you love.</h2>
+            <h2>Tell your friends what's good.</h2>
             <br />
 
             <div className="d-grid gap-2 d-md-block">
 
                 <Button
-                    style={{ backgroundColor: "#ff2f00ff", borderColor: "#273043", color: "#FFF" }}
+                    style={{ backgroundColor: "#273043", borderColor: "#FF5733", color: "#FFF" }}
                     className="btn btn-outline-dark me-4"
                     onClick={() => navigate("/ReviewByBand")}
                 >
@@ -38,7 +38,7 @@ export default function Home() {
                 </Button>
 
                 <Button
-                    style={{ backgroundColor: "#ff2f00ff", borderColor: "#273043", color: "#FFF" }}
+                    style={{ backgroundColor: "#273043", borderColor: "#FF5733", color: "#FFF" }}
                     className="btn btn-outline-dark me-4"
                     onClick={() => navigate("/ReviewByVenue")}
                 >
