@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 import { getRecentReviews } from "../../firebase/firebaseHelper";
@@ -20,7 +20,7 @@ export default function Home() {
     }, []);
 
     return (
-        <div className="home-page">
+        <Container className="home-page">
             <section className="hero-section glass-panel">
                 <p className="hero-eyebrow">Live music intel, curated by fans</p>
                 <h1>Welcome to Riffrate</h1>
@@ -108,6 +108,6 @@ export default function Home() {
                     </p>
                 )}
             </section>
-        </div>
+        </Container>
     );
 }

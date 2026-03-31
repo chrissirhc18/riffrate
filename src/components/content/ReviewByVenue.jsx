@@ -20,7 +20,7 @@ export default function ReviewByVenue() {
   const postsPerPage = 12;
 
   // ⭐ SORTING FUNCTION
-  const applySort = (list) => {
+  const applySort = React.useCallback((list) => {
     let sorted = [...list];
 
     switch (sortOption) {
@@ -51,7 +51,7 @@ export default function ReviewByVenue() {
     }
 
     return sorted;
-  };
+  });
 
   // ⭐ LOAD REVIEWS
   useEffect(() => {
@@ -63,7 +63,7 @@ export default function ReviewByVenue() {
       setReviews(sorted);
     }
     load();
-  }, [sortOption]);
+  }, [sortOption, applySort]);
 
   // ⭐ SEARCH BUTTON
   const handleSearch = () => {
