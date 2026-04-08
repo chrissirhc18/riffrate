@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, Alert, Container, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { doSignInWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
@@ -8,6 +8,10 @@ export default function UserLogin() {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
 
+  useEffect(() => {
+    if (userLoggedIn) navigate("/");
+  }, [userLoggedIn, navigate]);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -15,8 +19,7 @@ export default function UserLogin() {
 
   // Redirect if already logged in
   if (userLoggedIn) {
-    navigate("/");
-    return null;
+    return null; // Prevent rendering the login form
   }
 
   const handleEmailLogin = async (e) => {

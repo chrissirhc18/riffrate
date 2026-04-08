@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import { Form, Button, Alert, Container, Card } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from '../../firebase/auth';
@@ -7,6 +8,10 @@ import { useAuth } from './AuthContext';
 export default function UserRegister() {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();
+
+  useEffect(() => {
+    if (userLoggedIn) navigate("/");
+  }, [userLoggedIn, navigate]);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -17,8 +22,7 @@ export default function UserRegister() {
 
   // Redirect if already logged in
   if (userLoggedIn) {
-    navigate("/");
-    return null;
+    return null; // prevents unnecessary rendering of the registration form
   }
 
   const handleRegister = async (e) => {
